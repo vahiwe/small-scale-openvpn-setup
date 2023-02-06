@@ -6,3 +6,4 @@
 secret*.yaml
 secret*.yml
 !secrets.enc.yaml
+*.pem

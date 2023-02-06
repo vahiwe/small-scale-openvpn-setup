@@ -21,4 +21,5 @@ terraform {
 
 inputs = {
   generated_key_name = include.root.inputs.key_pair_name
+  save_path          = "${get_terragrunt_dir()}"
 }
