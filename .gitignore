@@ -1,0 +1,8 @@
+.terraform
+*.tfstate
+*.tfstate.backup
+.DS_Store
+.terraform.lock.hcl
+secret*.yaml
+secret*.yml
+!secrets.enc.yaml
