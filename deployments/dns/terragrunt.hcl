@@ -31,7 +31,8 @@ dependency "vpn_server" {
 
 
 inputs = {
-  domain_name = include.root.inputs.domain_name
-  subdomain   = include.root.inputs.subdomain
-  server_ip   = dependency.vpn_server.outputs.ip_address
+  domain_name     = include.root.inputs.domain_name
+  subdomain       = include.root.inputs.subdomain
+  server_ip       = dependency.vpn_server.outputs.ip_address
+  source_root_dir = include.root.inputs.source_root_dir
 }

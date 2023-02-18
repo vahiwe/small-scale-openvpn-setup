@@ -31,7 +31,16 @@ locals {
   ]
 
   # Merge the objects together, with deeper configs overriding higher configs
-  merged_config = merge(local.file_configs...)
+  merged_config = merge(
+    # Add root_deployments_dir to the config so it can be used in other places
+    {
+      deployment_root_dir = local.root_deployments_dir,
+      source_root_dir     = get_repo_root()
+    },
+    # Expand the list of configs into single object
+    # Has to the be the last argument to merge
+    local.file_configs...
+  )
 }
 
 # Pass the merged config to terraform as variable values using TF_VAR_

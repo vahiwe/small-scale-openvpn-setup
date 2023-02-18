@@ -12,3 +12,8 @@ variable "server_ip" {
   description = "The IP address of the server"
   type        = string
 }
+
+variable "source_root_dir" {
+  description = "The root directory of the source code"
+  type        = string
+}
