@@ -7,7 +7,9 @@ locals {
       }
     ]
   ])
-  all_ips = ["0.0.0.0/0"]
+  any_port     = 0
+  any_protocol = "-1"
+  all_ips      = ["0.0.0.0/0"]
 }
 
 data "aws_ssm_parameter" "ami_id" {
@@ -54,5 +56,14 @@ resource "aws_security_group_rule" "ingress_rules" {
   from_port         = each.value.port
   to_port           = each.value.port
   protocol          = each.value.protocol
+  cidr_blocks       = local.all_ips
+}
+
+resource "aws_security_group_rule" "egress_rule" {
+  security_group_id = aws_security_group.web_sg.id
+  type              = "egress"
+  from_port         = local.any_port
+  to_port           = local.any_port
+  protocol          = local.any_protocol
   cidr_blocks       = local.all_ips
 }
