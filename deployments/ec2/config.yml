@@ -1,0 +1,6 @@
+--- 
+instance_type: t2.micro
+ami_alias: /aws/service/marketplace/prod-qsfsbbgtg2p3o/2.8.5
+server_ports_protocol:
+  tcp: [80, 443, 22, 943, 945]
+  udp: [1194]
