@@ -28,7 +28,7 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot || true # if you get an error here, it's ok
 sudo certbot certonly --debug --non-interactive --preferred-challenges http --email $EMAIL_LINK --agree-tos --standalone --domains $DOMAIN_LINK --keep-until-expiring --pre-hook 'sudo service openvpnas stop' --post-hook 'sudo service openvpnas start'
 
-# sudo /usr/local/openvpn_as/scripts/sacli stop
+# Set ssl certificate for openvpn
 sudo /usr/local/openvpn_as/scripts/confdba -mk cs.ca_bundle -v "`sudo cat /etc/letsencrypt/live/$DOMAIN_LINK/fullchain.pem`"
 sudo /usr/local/openvpn_as/scripts/confdba -mk cs.priv_key -v "`sudo cat /etc/letsencrypt/live/$DOMAIN_LINK/privkey.pem`" > /dev/null
 sudo /usr/local/openvpn_as/scripts/confdba -mk cs.cert -v "`sudo cat /etc/letsencrypt/live/$DOMAIN_LINK/cert.pem`"
